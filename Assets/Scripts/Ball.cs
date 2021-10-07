@@ -19,35 +19,12 @@ public class Ball : MonoBehaviour
     {
         if (isPressed) return;
 
-        var force = new Vector2(0f, 0f);
-
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetMouseButtonDown(0))
         {
-            var north = new Vector2(0f, 1f);
-            force = north;
             isPressed = true;
-        }
-        else if (Input.GetKeyDown(KeyCode.D))
-        {
-            var east = new Vector2(1f, 0f);
-            force = east;
-            isPressed = true;
-        }
-        else if (Input.GetKeyDown(KeyCode.S))
-        {
-            var south = new Vector2(0f, -1f);
-            force = south;
-            isPressed = true;
-        }
-        else if (Input.GetKeyDown(KeyCode.A))
-        {
-            var west = new Vector2(-1f, 0f);
-            force = west;
-            isPressed = true;
-        }
-
-        if (isPressed)
-        {
+            Vector3 mouseWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            var force = mouseWorld - transform.position;
+            force.z = 0;
             rigidBody2D.velocity = force.normalized * speed;
         }
     }
