@@ -6,6 +6,7 @@ public class Ball : MonoBehaviour
 {
     private Rigidbody2D rigidBody2D;
     public float speed;
+    public float currentSpeed;
 
     // Start is called before the first frame update
     void Start()
@@ -20,5 +21,10 @@ public class Ball : MonoBehaviour
         var yForce = Random.Range(-1f, 1f);
         var force = new Vector2(xForce, yForce);
         rigidBody2D.velocity = force.normalized * speed;
+    }
+
+    private void Update()
+    {
+        currentSpeed = rigidBody2D.velocity.magnitude;
     }
 }
