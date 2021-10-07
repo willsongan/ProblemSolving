@@ -5,6 +5,12 @@ using UnityEngine;
 public class Square : MonoBehaviour
 {
     public int point;
+    private SquareSpawner squareSpawner;
+
+    private void Awake()
+    {
+        squareSpawner = FindObjectOfType<SquareSpawner>();
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -14,5 +20,17 @@ public class Square : MonoBehaviour
             player.currentScore += point;
             gameObject.SetActive(false);
         }
+    }
+
+    private void OnDisable()
+    {
+        Invoke("Respawn",3f);
+    }
+
+    private void Respawn()
+    {
+
+        gameObject.transform.position = squareSpawner.positionInRange();
+        gameObject.SetActive(true);
     }
 }
