@@ -24,7 +24,7 @@ public class Square : MonoBehaviour
 
     private void OnDisable()
     {
-        Invoke("Respawn",3f);
+        if(squareSpawner.isRespawnable) Invoke("Respawn",3f);
     }
 
     private void Respawn()

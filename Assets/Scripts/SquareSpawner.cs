@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class SquareSpawner : MonoBehaviour
 {
+    private Ball player;
+
+    [Header("Square Settings")]
     public GameObject square;
-    public Ball player;
     public int maxSquare;
+    public bool isRespawnable;
+
+    [Header("Spawn Area")]
     public float maxX;
     public float maxY;
     public float ballArea;
