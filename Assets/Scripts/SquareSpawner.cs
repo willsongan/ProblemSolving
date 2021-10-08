@@ -24,16 +24,17 @@ public class SquareSpawner : MonoBehaviour
 
     public Vector2 positionInRange()
     {
-        Vector2 pos = new Vector2(0f,0f);
         var playerPositionX = player.transform.position.x;
         var playerPositionY = player.transform.position.y;
-        while (pos.x >= -ballArea + playerPositionX && pos.x <= ballArea + playerPositionX
-            && pos.y >= -ballArea + playerPositionY && pos.y <= ballArea + playerPositionY)
+        Vector2 pos;
+        do
         {
             var xPosition = Random.Range(-maxX, maxX);
             var yPosition = Random.Range(-maxY, maxY);
             pos = new Vector2(xPosition, yPosition);
-        }
+        } while (pos.x >= -ballArea + playerPositionX && pos.x <= ballArea + playerPositionX
+            && pos.y >= -ballArea + playerPositionY && pos.y <= ballArea + playerPositionY);
+
         return pos;
     }
 

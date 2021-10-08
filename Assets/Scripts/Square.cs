@@ -29,7 +29,6 @@ public class Square : MonoBehaviour
 
     private void Respawn()
     {
-
         gameObject.transform.position = squareSpawner.positionInRange();
         gameObject.SetActive(true);
     }
